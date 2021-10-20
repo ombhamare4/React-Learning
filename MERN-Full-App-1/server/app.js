@@ -1,9 +1,21 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
-const DB = "mongodb+srv://webRubik:test'OR'a'='a'@web-db.qjovo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-mongoose.connect(DB);
+//Hide Database Password and more 
+dotenv.config({path:'./config.env'});
+
+
+const DB = process.env.DATABASE;
+mongoose.connect(DB,{
+    useNewUrlParser:true,//Alwasy false
+}).then(()=> {
+    console.log("Connection Done")
+}).catch((err) => {
+    console.log("Error: " + err)
+    console.log("Connection Fail");
+});
 
 const middleware =(req,res,next)=>{
     console.log("Hello My Middleware");
