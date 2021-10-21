@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 //Hide Database Password and more 
 dotenv.config({path:'./config.env'});
 require('./db/conn');
-
+const User = require('./model/userSchema');
 const PORT = process.env.PORT;
 
 
