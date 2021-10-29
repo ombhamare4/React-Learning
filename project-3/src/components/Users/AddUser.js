@@ -6,27 +6,31 @@ const AddUser = (props) => {
 
     const [enterUserName, setEnterUserName] = useState('');
     const [enterAge, setEnterAge] = useState('');
-    
+    const [error, setError] = useState('');
 
     const submitHandler = (event) => {
         event.preventDefault();//Prevent default form submission
 
 
         if (enterUserName.trim().length === 0 && enterAge.trim().length === 0) {
+            setError({
+                title: "Invalid Error",
+                message: "Please Enter Valid Age and Name"
+            });
             return;
         }
         if (+enterAge < 1) {
             return;
         }
 
-        props.onAdduser(enterUserName,enterAge);
+        props.onAdduser(enterUserName, enterAge);
 
         console.log("Form Submitted");
         console.log(enterUserName, enterAge);
         setEnterUserName('');
         setEnterAge('');
 
-      
+
 
         // if (enterUserName.trim().length > 0 && enterAge.trim().length > 0) {
         //     console.log("Form Submitted");
@@ -51,8 +55,8 @@ const AddUser = (props) => {
 
     return (
         <div >
-            
-            <ErrorModel title="Error Title" message="Error Message" />
+
+            {error && <ErrorModel title={error.title} message={error.message} />}
             <Card>
                 <form onSubmit={submitHandler}>
                     <div className="mb-3">
