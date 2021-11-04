@@ -55,19 +55,13 @@ function App() {
 
   return (
     <div>
-      {/* <div className="d-flex justify-content-around">
-        <button className="btn btn-primary" onClick={fetchTopAnimeHandles}>Load Anime</button>
-        <button className="btn btn-primary" onClick={fetchLatestAnimeHandles}>Load Latest Anime</button>
-        <button className="btn btn-primary" onClick={fetchTopAnimeHandles}>Load Anime</button>
-      </div> */}
-
       <Header />
       <Navbar />
 
       <div className="d-flex container-fluid">
         <section className="w-25 me-2">
           <div className="text-center">
-            <p>Top Airing Anime</p>
+            <p className="text-danger">Top Airing Anime</p>
             {!isLoading && <TopAiringAnime anime={TopAnime} />}
             {isLoading &&
               <div class="spinner-grow text-primary" role="status">
