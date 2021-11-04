@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
@@ -11,7 +11,7 @@ function App() {
   const [latestAnime,setLatestAnime] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  async function fetchTopAnimeHandles() {
+  const  fetchTopAnimeHandles=useCallback(async()=> {
     setIsLoading(true);
     const response = await fetch("https://api.jikan.moe/v3/top/anime");
     const data = await response.json();
@@ -26,10 +26,10 @@ function App() {
     // console.log(transformTopAnime);
     setTopAnime(transformTopAnime);
     setIsLoading(false);
-  };
+  },[]);
 
 
-  async function fetchLatestAnimeHandles() {
+  const fetchLatestAnimeHandles = useCallback(async () => {
     setIsLoading(true);
     const response = await fetch("https://api.jikan.moe/v3/season/2021/fall");
     const data = await response.json();
@@ -44,17 +44,22 @@ function App() {
     // console.log(transformTopAnime);
     setLatestAnime(transformLatestAnime);
     setIsLoading(false);
-  };
+  },[]);
+
+  useEffect(()=>{
+    fetchTopAnimeHandles();
+    fetchLatestAnimeHandles();
+  },[fetchLatestAnimeHandles,fetchTopAnimeHandles]);
 
   // fetchTopAnimeHandles()
 
   return (
     <div>
-      <div className="d-flex justify-content-around">
+      {/* <div className="d-flex justify-content-around">
         <button className="btn btn-primary" onClick={fetchTopAnimeHandles}>Load Anime</button>
         <button className="btn btn-primary" onClick={fetchLatestAnimeHandles}>Load Latest Anime</button>
         <button className="btn btn-primary" onClick={fetchTopAnimeHandles}>Load Anime</button>
-      </div>
+      </div> */}
 
       <Header />
       <Navbar />
