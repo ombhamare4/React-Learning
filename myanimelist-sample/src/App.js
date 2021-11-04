@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Header from './components/Header/Header';
+import Navbar from './components/Navbar/Navbar';
+import TopAiringAnime from'./components/TopAiringAnime/TopAiringAnime';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <Header/>
+    <Navbar/>
+    <div className="d-flex container-fluid">
+      <section className="width-25">
+        <div>
+          <p>Top Airing Anime</p>
+          <TopAiringAnime/>
+        </div>
+        <div>
+          <p>Scedule Anime</p>
+        </div>
+      </section>
+      <section className="width-75"> 
+        <h1>Main Content</h1>
+      </section>
     </div>
+    </>
   );
 }
 
