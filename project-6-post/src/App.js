@@ -13,34 +13,57 @@ function App() {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch('https://react-poject-6-post-default-rtdb.asia-southeast1.firebasedatabase.app/');
+      const response = await fetch('https://react-poject-6-post-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json');
       if (!response.ok) {
         throw new Error('Something went wrong!');
       }
 
       const data = await response.json();
 
-      const transformedMovies = data.results.map((movieData) => {
-        return {
-          id: movieData.episode_id,
-          title: movieData.title,
-          openingText: movieData.opening_crawl,
-          releaseDate: movieData.release_date,
-        };
-      });
-      setMovies(transformedMovies);
+      const loadedData = [];
+      for (const key in data) {
+        loadedData.push(
+          {
+            id: key,
+            title: data[key].title,
+            openingText: data[key].openingText,
+            releaseDate: data[key].release_date,
+          }
+        );
+      }
+
+      // const transformedMovies = data.loadedData.map((movieData) => {
+      //   return {
+      //     id: movieData.episode_id,
+      //     title: movieData.title,
+      //     openingText: movieData.opening_crawl,
+      //     releaseDate: movieData.release_date,
+      //   };
+      // });
+      setMovies(loadedData);
     } catch (error) {
       setError(error.message);
     }
     setIsLoading(false);
   }, []);
 
+
   useEffect(() => {
     fetchMoviesHandler();
+
   }, [fetchMoviesHandler]);
 
-  function addMovieHandler(movie) {
-    console.log(movie);
+  async function addMovieHandler(movie) {
+    await fetch('https://react-poject-6-post-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json',
+      {
+        method: 'POST',
+        body: JSON.stringify(movie),
+        header: {
+          'Content-Type': 'application/json'
+        }
+      });
+    // const data = await response.json();
+    // console.log(data);
   }
 
   let content = <p>Found no movies.</p>;
@@ -62,9 +85,9 @@ function App() {
       <section>
         <AddMovie onAddMovie={addMovieHandler} />
       </section>
-      <section>
+      {/* <section>
         <button onClick={fetchMoviesHandler}>Fetch Movies</button>
-      </section>
+      </section> */}
       <section>{content}</section>
     </React.Fragment>
   );
