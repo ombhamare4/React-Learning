@@ -2,6 +2,8 @@
   margin-top: 1rem;
   position: relative;
   text-align: center;
+  
+  text-align: center;
 }
 
 .loading {
@@ -16,6 +18,7 @@
 
 .control {
   margin-bottom: 0.5rem;
+  
 }
 
 .control label {
