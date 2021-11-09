@@ -1,51 +1,55 @@
-import { useParams, Route, Link , useRouteMatch } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, Route, Link, useRouteMatch } from 'react-router-dom';
 import Comments from '../components/comments/Comments'
 import HighlightedQuote from '../components/quotes/HighlightedQuote'
-const DUMMY_QUOTES = [
-    {
-        id: 'q1',
-        author: 'Itachi Uchiha',
-        text: '“People’s lives don’t end when they die, it ends when they lose faith.”'
-    },
-    {
-        id: 'q2',
-        author: 'Monkey D. Luffy ',
-        text: '“If you don’t take risks, you can’t create a future!”'
-    },
-    {
-        id: 'q3',
-        author: 'Naruto Uzumaki',
-        text: '“If you don’t like your destiny, don’t accept it.”'
-    },
-    {
-        id: 'q4',
-        author: 'Nagato',
-        text: '“If you don’t share someone’s pain, you can never understand them.”'
-    },
-    {
-        id: 'q5',
-        author: 'Saitama',
-        text: '“I’ll leave tomorrow’s problems to tomorrow’s me.”'
-    },
-]
+import LoadingSpinner from '../components/UI/LoadingSpinner';
+// import NoQuotesFound from '../components/quotes/NoQuotesFound';
+import useHttp from '../hooks/use-http';
+import { getSingleQuote } from '../lib/api';
 
 const QuoteDetails = () => {
-    const param = useParams();
+    const params = useParams();
 
     const match = useRouteMatch();
+    //Geting Quote ID 
+    const { quotesId } = params;//Object Destructuring
 
-    console.log(match);
+    const { sendRequest, status, data: loadedQuote, error } = useHttp(getSingleQuote, true);
 
-    const quote = DUMMY_QUOTES.find(quote => quote.id === param.quotesId);
 
-    if (!quote) {
-        return <p>No Quote found.</p>
+    useEffect(() => {
+        sendRequest(quotesId);
+    }, [sendRequest, quotesId]);
+
+    // const quote = DUMMY_QUOTES.find(quote => quote.id === param.quotesId);
+
+    // if (!loadingQuotes ) {
+    //     return <NoQuotesFound/>
+    // }
+
+    if (status === 'pending') {
+        return (
+            <div className="centered">
+                <LoadingSpinner />
+            </div>
+        )
+    };
+
+    if (error) {
+        return (
+            <p className="centered focused">{error}</p>
+        )
+    }
+
+    console.log(loadedQuote);
+    if (!loadedQuote.text) {
+        return <p>No quote found!</p>;
     }
 
     return (
         <div>
             {/* <h1>Quotes Details : {param.quotesId}</h1> */}
-            <HighlightedQuote text={quote.text} author={quote.author} />
+            <HighlightedQuote text={loadedQuote.text} author={loadedQuote.author} />
             <Route path={`${match.path}`} exact>
                 <div className="centered">
                     <Link className="btn--flat" to={`${match.url}/comments`}>load Comment</Link>
