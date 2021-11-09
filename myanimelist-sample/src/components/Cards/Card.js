@@ -1,123 +1,22 @@
 import './Card.css'
-
-const Card = () => {
+// import { Link, Route } from 'react-router-dom';
+const Card = (props) => {
 
     const style = {
         width: 120
     }
 
     return (
-        <>
-        <a>
-            <div class="card mx-2" style={style}>
-                <img src="https://cdn.myanimelist.net/r/160x220/images/anime/1028/117777.webp?s=c5049358214f7bdddcc5eabc9151de13"
+        <a href="/">
+            <div class="card mx-1" style={style}>
+                <img src={props.image_url}
                     alt="..." />
                 <div class="mt-2">
-                    <p class="text-center ellipsis">Mushoku Tensei: Isekai Ittara Honki Dasu Part 2 </p>
+                    <p class="text-center ellipsis">{props.title}</p>
                 </div>
             </div>
         </a>
-        <a>
-            <div class="card mx-2" style={style}>
-                <img src="https://cdn.myanimelist.net/r/160x220/images/anime/1028/117777.webp?s=c5049358214f7bdddcc5eabc9151de13"
-                    alt="..." />
-                <div class="mt-2">
-                    <p class="text-center ellipsis">Mushoku Tensei: Isekai Ittara Honki Dasu Part 2 </p>
-                </div>
-            </div>
-        </a>
-        <a>
-            <div class="card mx-2" style={style}>
-                <img src="https://cdn.myanimelist.net/r/160x220/images/anime/1028/117777.webp?s=c5049358214f7bdddcc5eabc9151de13"
-                    alt="..." />
-                <div class="mt-2">
-                    <p class="text-center ellipsis">Mushoku Tensei: Isekai Ittara Honki Dasu Part 2 </p>
-                </div>
-            </div>
-        </a>
-        <a>
-            <div class="card mx-2" style={style}>
-                <img src="https://cdn.myanimelist.net/r/160x220/images/anime/1028/117777.webp?s=c5049358214f7bdddcc5eabc9151de13"
-                    alt="..." />
-                <div class="mt-2">
-                    <p class="text-center ellipsis">Mushoku Tensei: Isekai Ittara Honki Dasu Part 2 </p>
-                </div>
-            </div>
-        </a>
-        <a>
-            <div class="card mx-2" style={style}>
-                <img src="https://cdn.myanimelist.net/r/160x220/images/anime/1028/117777.webp?s=c5049358214f7bdddcc5eabc9151de13"
-                    alt="..." />
-                <div class="mt-2">
-                    <p class="text-center ellipsis">Mushoku Tensei: Isekai Ittara Honki Dasu Part 2 </p>
-                </div>
-            </div>
-        </a>
-        <a>
-            <div class="card mx-2" style={style}>
-                <img src="https://cdn.myanimelist.net/r/160x220/images/anime/1028/117777.webp?s=c5049358214f7bdddcc5eabc9151de13"
-                    alt="..." />
-                <div class="mt-2">
-                    <p class="text-center ellipsis">Mushoku Tensei: Isekai Ittara Honki Dasu Part 2 </p>
-                </div>
-            </div>
-        </a>
-        <a>
-            <div class="card mx-2" style={style}>
-                <img src="https://cdn.myanimelist.net/r/160x220/images/anime/1028/117777.webp?s=c5049358214f7bdddcc5eabc9151de13"
-                    alt="..." />
-                <div class="mt-2">
-                    <p class="text-center ellipsis">Mushoku Tensei: Isekai Ittara Honki Dasu Part 2 </p>
-                </div>
-            </div>
-        </a>
-        <a>
-            <div class="card mx-2" style={style}>
-                <img src="https://cdn.myanimelist.net/r/160x220/images/anime/1028/117777.webp?s=c5049358214f7bdddcc5eabc9151de13"
-                    alt="..." />
-                <div class="mt-2">
-                    <p class="text-center ellipsis">Mushoku Tensei: Isekai Ittara Honki Dasu Part 2 </p>
-                </div>
-            </div>
-        </a>
-        <a>
-            <div class="card mx-2" style={style}>
-                <img src="https://cdn.myanimelist.net/r/160x220/images/anime/1028/117777.webp?s=c5049358214f7bdddcc5eabc9151de13"
-                    alt="..." />
-                <div class="mt-2">
-                    <p class="text-center ellipsis">Mushoku Tensei: Isekai Ittara Honki Dasu Part 2 </p>
-                </div>
-            </div>
-        </a>
-        <a>
-            <div class="card mx-2" style={style}>
-                <img src="https://cdn.myanimelist.net/r/160x220/images/anime/1028/117777.webp?s=c5049358214f7bdddcc5eabc9151de13"
-                    alt="..." />
-                <div class="mt-2">
-                    <p class="text-center ellipsis">Mushoku Tensei: Isekai Ittara Honki Dasu Part 2 </p>
-                </div>
-            </div>
-        </a>
-        <a>
-            <div class="card mx-2" style={style}>
-                <img src="https://cdn.myanimelist.net/r/160x220/images/anime/1028/117777.webp?s=c5049358214f7bdddcc5eabc9151de13"
-                    alt="..." />
-                <div class="mt-2">
-                    <p class="text-center ellipsis">Mushoku Tensei: Isekai Ittara Honki Dasu Part 2 </p>
-                </div>
-            </div>
-        </a>
-        <a>
-            <div class="card mx-2" style={style}>
-                <img src="https://cdn.myanimelist.net/r/160x220/images/anime/1028/117777.webp?s=c5049358214f7bdddcc5eabc9151de13"
-                    alt="..." />
-                <div class="mt-2">
-                    <p class="text-center ellipsis">Mushoku Tensei: Isekai Ittara Honki Dasu Part 2 </p>
-                </div>
-            </div>
-        </a>
-        </>
-        
+
     )
 };
 

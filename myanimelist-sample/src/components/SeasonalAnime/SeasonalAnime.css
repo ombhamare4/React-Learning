@@ -1,15 +1,25 @@
 .scrollmenu {
-    background-color: #333;
     overflow: auto;
     white-space: nowrap;
   }
   
 .scrollmenu a {
     display: inline-block;
-    color: white;
+    color: rgb(0, 0, 0);
     text-align: center;
-    padding: 14px;
+    padding: 8px;
+    vertical-align: middle;
     text-decoration: none;
+    
+  }
+
+  .center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
 
 .scrollmenu::-webkit-scrollbar {
