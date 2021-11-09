@@ -1,18 +1,51 @@
-import './Header.css'
 
-const Header = props => {
+import './Header.css';
+
+const Header = () => {
     return (
         <div>
-            <nav className="bg-light p-2 d-flex justify-content-between">
-                <div className="container-fluid">
-                    <span className="navbar-brand mb-0 h1 align-middle">My Anime List</span>
-                </div>
-                <div className="d-flex me-5">
-                    <button type="button" className="btn btn-danger mx-2 btn-sm">Hide Ads</button>
-                    <i className="bi bi-list  mx-2 center"></i>
-                </div>
-            </nav>
+            <header className="p-2 bg-dark mb-2">
+                <nav className="navbar navbar-expand-lg ">
+                    <div className="container-fluid">
+                        <h2 className="navbar-brand header-logo text-white mt-2" href="/">My Anime List</h2>
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"><i className="bi bi-list"></i></span>
+                        </button>
+                        <div className="collapse navbar-collapse " id="navbarSupportedContent">
+                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li className="nav-item">
+                                    <a className="nav-link text-white" aria-current="page" href="/">Anime</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link text-white" href="/">Manga</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link text-white" href="/">Community</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link text-white" href="/">News</a>
+                                </li>
 
+                                {/* <li className="nav-item dropdown">
+                                    <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Dropdown
+                                    </a>
+                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a className="dropdown-item" href="/">Action</a></li>
+                                        <li><a className="dropdown-item" href="/">Another action</a></li>
+                                        <li><hr className="dropdown-divider" /></li>
+                                        <li><a className="dropdown-item" href="/">Something else here</a></li>
+                                    </ul>
+                                </li> */}
+                            </ul>
+                            {/* <form className="d-flex">
+                                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                                <button className="btn btn-outline-success" type="submit">Search</button>
+                            </form> */}
+                        </div>
+                    </div>
+                </nav>
+            </header>
         </div>
     )
 };

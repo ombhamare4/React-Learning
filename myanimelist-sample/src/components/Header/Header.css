@@ -1,8 +1,26 @@
-.center {
-    /* width: 70px;
-    height: 300px; */
-    /* border: 1px solid #c3c3c3; */
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-  }
+@import url(//db.onlinewebfonts.com/c/73fedd912ba11f583a359ce4c2e742ed?family=Ninja+Naruto);
+
+ul{
+    list-style: none;
+}
+
+.header-logo{
+    font-family: Ninja Naruto;
+}
+
+.vertical-align-middle{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+a:hover{
+    background: rgba(207, 0, 15, 1);
+    transition: 0.5s;
+}
+
+i:hover{
+    color: white;
+    transition: 0.5s;
+}
