@@ -1,0 +1,1 @@
+// https://api.jikan.moe/v3/anime/48556/characters_staff

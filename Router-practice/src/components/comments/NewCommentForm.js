@@ -15,7 +15,7 @@ const NewCommentForm = (props) => {
     if (status === 'completed' && !error) {
       sendRequest();
     }
-  }, [sendRequest,onAddedComment,error]);
+  }, [sendRequest,onAddedComment,error,status]);
 
   const submitFormHandler = (event) => {
     event.preventDefault();

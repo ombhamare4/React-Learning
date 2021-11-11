@@ -1,0 +1,32 @@
+.text-center{
+    text-align: center;
+}
+input[type="text"]{
+    width: 500px;
+    padding: 5px 15px;
+    border: 2px red solid;
+    border-radius: 20px;
+    color: white;
+    background-color:rgb(41, 36, 36);
+    margin-right: 5px;
+}
+
+.buttonSearch{
+    background-color: #f53434; /* Green */
+    border: none;
+    border-radius: 80px;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.buttonSearch:hover {
+    border: none;
+    background-color:rgb(41, 36, 36);
+    color:red;
+}

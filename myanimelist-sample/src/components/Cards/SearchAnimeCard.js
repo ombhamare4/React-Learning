@@ -1,8 +1,8 @@
-import Card from '../Cards/Card'
-const CardList = (props) => {
+import Card from './Card';
+const SearchAnimeCard = (props) => {
     return (
         <>
-            <ul>
+            <ul className="d-flex flex-wrap justify-content-evenly mx-5">
                 {props.anime.slice(0, 15).map((anime) => (
                     <Card
                         key={anime.id}
@@ -16,4 +16,4 @@ const CardList = (props) => {
     )
 };
 
-export default CardList;
+export default SearchAnimeCard;

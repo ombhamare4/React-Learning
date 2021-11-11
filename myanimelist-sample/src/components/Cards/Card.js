@@ -1,13 +1,13 @@
-import './Card.css'
 // import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import './Card.css';
 const Card = (props) => {
-
     const style = {
         width: 120
     }
-
     return (
-        <a href="/">
+        <>
+        <Link to={`/anime-detail/${props.id}`}>
             <div class="card mx-1" style={style}>
                 <img src={props.image_url}
                     alt="..." />
@@ -15,8 +15,8 @@ const Card = (props) => {
                     <p class="text-center ellipsis">{props.title}</p>
                 </div>
             </div>
-        </a>
-
+        </Link>
+        </>
     )
 };
 
