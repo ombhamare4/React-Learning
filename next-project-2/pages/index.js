@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-
 import MeetupList from '../components/meetups/MeetupList'
 const DUMMY_MEETUPS = [
     {
@@ -30,20 +28,48 @@ const DUMMY_MEETUPS = [
 
 ]
 
-const HomePage = () => {
+const HomePage = (props) => {
 
-    const [loadedMeetups, setLoadedMeetups] = useState([]);
+    // const [loadedMeetups, setLoadedMeetups] = useState([]);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        setLoadedMeetups(DUMMY_MEETUPS);
-    },[]);
+    //     setLoadedMeetups(DUMMY_MEETUPS);
+    // }, []);
 
     return (
-
-        <MeetupList meetups={loadedMeetups} />
-
+        <>
+            <MeetupList meetups={props.meetups} />
+        </>
     )
+};
+
+// export async function getServerSideProps(context) {
+//     const req = context.req;
+//     const res = context.res; 
+//     // Fetch data on from API on server not on client side
+//     return {
+//         props: {
+//             meetups: DUMMY_MEETUPS
+//         }
+//         //Here not required revalidate because every request come in this function automatically revalidate
+//     };
+
+// };
+
+export async function getStaticProps() {
+    // This function return something which is not visible to any client 
+    //It use to fetch API 
+    //It returns an Object
+    return {
+        //Set Props poerty here. it is necessary and that props hold other object
+        //Which will received props in your component function
+        props: {
+            meetups: DUMMY_MEETUPS
+        },
+        //It referse the page 
+        revalidate: 1
+    };
 };
 
 export default HomePage;
