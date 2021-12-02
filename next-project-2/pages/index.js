@@ -1,44 +1,17 @@
+import { MongoClient } from 'mongodb';
+import Head from 'next/head';
+
+
 import MeetupList from '../components/meetups/MeetupList'
-const DUMMY_MEETUPS = [
-    {
-        id: 1,
-        title: "InterView",
-        image: "https://c4.wallpaperflare.com/wallpaper/952/824/961/makoto-shinkai-kimi-no-na-wa-wallpaper-preview.jpg",
-        address: "Tokyo",
-    },
-    {
-        id: 2,
-        title: "Language School Admission",
-        image: "https://c4.wallpaperflare.com/wallpaper/945/578/382/osaka-city-lights-wallpaper-preview.jpg",
-        address: "Osaka",
-    },
-    {
-        id: 3,
-        title: "Weeding",
-        image: "https://c4.wallpaperflare.com/wallpaper/382/472/58/night-the-city-lights-spring-wallpaper-preview.jpg",
-        address: "Kyoto",
-    },
-    {
-        id: 4,
-        title: "Tour",
-        image: "https://c4.wallpaperflare.com/wallpaper/994/253/68/japan-mountains-mount-fuji-asian-architecture-wallpaper-preview.jpg",
-        address: "Kyoto",
-    },
 
-
-]
 
 const HomePage = (props) => {
 
-    // const [loadedMeetups, setLoadedMeetups] = useState([]);
-
-    // useEffect(() => {
-
-    //     setLoadedMeetups(DUMMY_MEETUPS);
-    // }, []);
-
     return (
         <>
+            <Head>
+                <title>Next.js Meetups</title>
+            </Head>
             <MeetupList meetups={props.meetups} />
         </>
     )
@@ -61,11 +34,26 @@ export async function getStaticProps() {
     // This function return something which is not visible to any client 
     //It use to fetch API 
     //It returns an Object
+
+    const client = await MongoClient.connect("mongodb+srv://webRubik:test'OR'a'='a'@web-db.qjovo.mongodb.net/meetups?retryWrites=true&w=majority");
+    const db = client.db();
+
+    const meetupsCollection = db.collection('meetups');
+
+    const Meetups_Data = await meetupsCollection.find().toArray(); //Find will find all meetups from collection
+
+
     return {
         //Set Props poerty here. it is necessary and that props hold other object
         //Which will received props in your component function
         props: {
-            meetups: DUMMY_MEETUPS
+            meetups: Meetups_Data.map(meetup => ({
+                title: meetup.title,
+                address: meetup.address,
+                image: meetup.image,
+                description: meetup.description,
+                id: meetup._id.toString()
+            }))
         },
         //It referse the page 
         revalidate: 1
